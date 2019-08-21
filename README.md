@@ -31,7 +31,10 @@
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false, unique: true, index: true
+|text|text|null: false, unique: true, index: true|
+|user_id|integer|null: false,foreign_key:true|
+|member_id|integer|null: false, foreign_key: true|
+
 ### Association
 - belongs_to :user
 - belongs_to :member
@@ -40,7 +43,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false,foreign_key:true|
-|group_id|integer|null: false, foreign_key: true|
+|member_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :member
@@ -49,7 +52,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|integer|null: false,foreign_key:true|
 ### Association
 - has_many :user_members
 - has_many :users, through: :user_members
+- has_many :comments
