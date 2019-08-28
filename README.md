@@ -28,10 +28,11 @@
 - has_many :comments
 - has_many :members, through: :users_members
 
-## commentsテーブル
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false, unique: true, index: true|
+|image|text||
+|text|text||
 |user_id|integer|null: false,foreign_key:true|
 |member_id|integer|null: false, foreign_key: true|
 
