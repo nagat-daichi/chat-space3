@@ -1,24 +1,59 @@
-# README
+* Ruby version	- has_many :posts
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* System dependencies	
 
-Things you may want to cover:
+* Configuration	
 
-* Ruby version
+* Database creation	|------|----|-------|
 
-* System dependencies
+* Database initialization	|group_id|
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
+ * How to run the test suite	### 
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+ * Deployment instructions
 
 * ...
+
+
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false,unique: true|
+|password|string|null: false,unique: true, index: true|
+|name|string|null: false,unique: true, index: true|
+### Association
+- has_many :users_members
+- has_many :comments
+- has_many :members, through: :users_members
+
+## messagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|text||
+|text|text||
+|user_id|integer|null: false,foreign_key:true|
+|member_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :member
+
+## user_membersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false,foreign_key:true|
+|member_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :member
+
+## membersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### Association
+- has_many :user_members
+- has_many :users, through: :user_members
+- has_many :comments
